@@ -268,6 +268,16 @@ function goPage(pageId) {
   /* 계절 테마 변경 */
   setSeasonTheme(pageId);
 
+/* 홈 알림 표시 / 다른 페이지에서는 숨김 */
+if (pageId === "home") {
+
+  showSummerNotice();
+
+} else {
+
+  hideSummerNotice();
+
+}
 
   /* 화면 맨 위로 */
   window.scrollTo({
@@ -309,13 +319,24 @@ function showPageOnly(pageId) {
     document.getElementById(pageId);
 
 
-  if (targetPage) {
+if (targetPage) {
 
-    targetPage.classList.add("active");
+  targetPage.classList.add("active");
 
-    setSeasonTheme(pageId);
+  setSeasonTheme(pageId);
+
+
+  if (pageId === "home") {
+
+    showSummerNotice();
+
+  } else {
+
+    hideSummerNotice();
 
   }
+
+}
 
   else {
 
@@ -331,6 +352,8 @@ function showPageOnly(pageId) {
 
 
     setSeasonTheme("home");
+
+showSummerNotice();
 
   }
 
@@ -711,3 +734,65 @@ window.addEventListener(
 
   }
 );
+
+/* =========================================================
+   SUMMER UPDATE NOTICE
+========================================================= */
+
+/* =========================================================
+   SUMMER UPDATE NOTICE
+========================================================= */
+
+function showSummerNotice() {
+
+  const notice =
+    document.getElementById('summer-update-notice');
+
+  if (!notice) return;
+
+
+  /* 애니메이션 초기화 */
+  notice.classList.remove('show');
+
+
+  /* 홈 화면 애니메이션이 먼저 끝난 뒤 알림 등장 */
+  setTimeout(() => {
+
+    void notice.offsetWidth;
+
+    notice.classList.add('show');
+
+  }, 600);
+
+}
+
+
+function hideSummerNotice() {
+
+  const notice =
+    document.getElementById('summer-update-notice');
+
+  if (!notice) return;
+
+  notice.classList.remove('show');
+
+}
+
+
+function closeSummerNotice() {
+
+  const notice =
+    document.getElementById('summer-update-notice');
+
+  if (!notice) return;
+
+  notice.classList.remove('show');
+
+}
+
+
+window.addEventListener('load', () => {
+
+  showSummerNotice();
+
+});
