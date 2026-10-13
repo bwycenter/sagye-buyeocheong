@@ -40161,3 +40161,104 @@ article > div[class*="content"] {
 .info-grid > div::before {
   display: none !important;
 }
+
+/* =========================================================
+   SUMMER CONTENTS PHOTO · FINAL FILL FIX
+   summer-content 이미지 전체 꽉 채우기
+========================================================= */
+
+/* 모든 여름 CONTENTS 활동사진 */
+.summer-story-page
+img[src*="summer-content"] {
+  display: block !important;
+
+  width: 100% !important;
+  height: auto !important;
+
+  aspect-ratio: 4 / 3 !important;
+
+  object-fit: cover !important;
+  object-position: center center !important;
+
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+
+  /* 원본 사진에 아주 얇은 자체 여백이 있어도 보이지 않게 */
+  transform: scale(1.015);
+}
+
+
+/* 사진을 감싸는 영역도 여백 제거 */
+.summer-story-page
+section[class*="-contents"]
+[class$="-photo"],
+
+.summer-story-page
+.summer-detail-section
+[class$="-photo"] {
+  position: relative;
+
+  width: 100% !important;
+
+  aspect-ratio: 4 / 3 !important;
+
+  overflow: hidden !important;
+
+  padding: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  border: 0 !important;
+
+  background: transparent !important;
+}
+
+
+/* 위 사진영역 안의 이미지는 박스 전체를 강제로 사용 */
+.summer-story-page
+section[class*="-contents"]
+[class$="-photo"]
+img[src*="summer-content"],
+
+.summer-story-page
+.summer-detail-section
+[class$="-photo"]
+img[src*="summer-content"] {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  aspect-ratio: auto !important;
+
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+
+/* 모바일 */
+@media (max-width: 600px) {
+
+  .summer-story-page
+  img[src*="summer-content"] {
+    aspect-ratio: 16 / 10 !important;
+  }
+
+
+  .summer-story-page
+  section[class*="-contents"]
+  [class$="-photo"],
+
+  .summer-story-page
+  .summer-detail-section
+  [class$="-photo"] {
+    aspect-ratio: 16 / 10 !important;
+  }
+
+}
